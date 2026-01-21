@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			// Тут додай свій код для показу нотіфікейшина
 			Toastify({
 				text: "Your message has been sent successfully.",
-				duration: 3000,
+				duration: 5000,
 				newWindow: true,
 				close: true,
 				gravity: "bottom", // `top` or `bottom`
@@ -215,7 +215,19 @@ document.addEventListener('DOMContentLoaded', function() {
 				});
 			} else {
 				// Тут додай код для показу загальної помилки
-				// showNotification('error', 'Помилка відправки. Спробуйте ще раз.');
+				Toastify({
+				text: "There was an error sending the message. Please check the information you entered and try again.",
+				duration: 5000,
+				newWindow: true,
+				close: true,
+				gravity: "bottom", // `top` or `bottom`
+				position: "center", // `left`, `center` or `right`
+				stopOnFocus: true, // Prevents dismissing of toast on hover
+				style: {
+					background: "red",
+				},
+				onClick: function(){} // Callback after click
+			}).showToast();
 			}
 		})
 		.finally(() => {
