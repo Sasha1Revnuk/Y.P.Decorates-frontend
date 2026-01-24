@@ -69,15 +69,39 @@
     }
     // home 1
 
+    // if( $().isotope ){
+    //     var $container_1 = $('#container').isotope({});
+    //     $('#mmfilters').on('click', 'button', function () {
+    //         var filterValue = $(this).attr('data-filter');
+    //         $container_1.isotope({ filter: filterValue });
+    //     });
+    //     $('#mmfilters li').click(function(e) {
+    //         e.preventDefault();
+    //         $('#mmfilters li').removeClass('active'); // Тільки в межах фільтрів!
+    //         $(this).addClass('active');
+    //     });
+    // }
+
+    // home 1
     if( $().isotope ){
-        var $container_1 = $('#container').isotope({});
+        var $container_1 = $('#container');
+        
+        // Чекаємо завантаження всієї сторінки
+        $(window).on('load', function() {
+            $container_1.isotope({
+                itemSelector: '.item',
+                layoutMode: 'masonry'
+            });
+        });
+        
         $('#mmfilters').on('click', 'button', function () {
             var filterValue = $(this).attr('data-filter');
             $container_1.isotope({ filter: filterValue });
         });
+        
         $('#mmfilters li').click(function(e) {
             e.preventDefault();
-            $('#mmfilters li').removeClass('active'); // Тільки в межах фільтрів!
+            $('#mmfilters li').removeClass('active');
             $(this).addClass('active');
         });
     }
